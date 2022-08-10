@@ -34,7 +34,7 @@
         <input name="username" type="username" placeholder="Username">
         <input name="password" type="password" placeholder="Password">
         <button class="btn" name="register" type="submit" value="Register">
-            <span id="registerBtn">SIGN UP</span>
+            <span>SIGN UP</span>
         </button>
     </form>
 </body>

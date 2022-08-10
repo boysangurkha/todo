@@ -68,6 +68,29 @@
                 return $this;
         }
 
+        public function canLogin() 
+        {
+            $conn = Db::getInstance();;
+            $stmt = $conn->prepare("select * from users where username = :username");
+            $stmt -> bindValue(":username", $this -> username);
+            $stmt -> execute();
+            $user = ($stmt->fetch());
+          
+            if(!$user){
+                throw new Exception("User not exist.");
+                return false;
+            }
+
+            if(password_verify($this->password, $user['password'])){
+                return true;
+            }
+
+            else{
+                throw new Exception("Password not right.");
+                return false;
+            }
+        }
+
         public function register()
         {
                 $conn = Db::getInstance();
@@ -89,5 +112,14 @@
                 $statement->bindValue(":password", $hash);
                 $statement->execute();
                 return true;
+        }
+
+        public static function getEmailByUsername($username) {
+            $conn = Db::getInstance();
+            $stmt = $conn->prepare("select * from users where username = :username");
+            $stmt -> bindValue(":username", $username);
+            $stmt -> execute();
+            $user = ($stmt->fetch());
+            return $user;
         }
     }
