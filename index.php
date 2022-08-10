@@ -21,8 +21,8 @@ $user = User::getUserByEmail($_SESSION['email']);
 </head>
 <body>
     <form action="./addList.php" method="POST">
-        <button class="btn" name="addList" type="submit">
-            <span>Add List</span>
+        <button class="btn" name="newList" type="submit">
+            <span>NEW LIST</span>
         </button>
     </form>  
 

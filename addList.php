@@ -21,7 +21,12 @@ $user = User::getUserByEmail($_SESSION['email']);
 </head>
 <body>
     <form action="addList-upload.php">
-        
+        <h1>New List</h1>
+        <input type="text" name="listTitle" placeholder="List title">
+        <input type="text" name="listDescription" placeholder="List description">
+        <button class="btn" name="addList" type="submit" value="addList">
+            <span>ADD LIST</span>
+        </button>
     </form>
 </body>
 </html>
