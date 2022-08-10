@@ -122,4 +122,13 @@
             $user = ($stmt->fetch());
             return $user;
         }
+
+        public static function getUserByEmail($email) {
+            $conn = Db::getInstance();
+            $stmt = $conn->prepare("select * from users where email = :email");
+            $stmt -> bindValue(":email", $email);
+            $stmt -> execute();
+            $user = ($stmt->fetch());
+            return $user;
+        }
     }

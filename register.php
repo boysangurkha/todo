@@ -36,6 +36,8 @@
         <button class="btn" name="register" type="submit" value="Register">
             <span>SIGN UP</span>
         </button>
+        <h2>Already an account?</h2>
+        <a href="login.php">Login</a>
     </form>
 </body>
 </html>
