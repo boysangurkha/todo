@@ -131,4 +131,13 @@
             $user = ($stmt->fetch());
             return $user;
         }
+
+        public static function getUserById($id) {
+            $conn = Db::getInstance();
+            $stmt = $conn->prepare("select * from users where id = :id");
+            $stmt -> bindValue(":id", $id);
+            $stmt -> execute();
+            $user = ($stmt->fetch());
+            return $user;
+        }
     }

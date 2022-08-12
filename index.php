@@ -1,6 +1,7 @@
 <?php
 include_once(__DIR__ . "/helpers/bootstrap.php");
 include_once(__DIR__ . "/helpers/Security.php");
+include_once("./classes/Lijst.php");
 if(Security::onlyLoggedInUsers()){
     if(!empty($_POST)){
     }
@@ -20,6 +21,23 @@ $user = User::getUserByEmail($_SESSION['email']);
     <title>ToDo - <?php echo ($user['username']);?></title>
 </head>
 <body>
+
+    <div class="container">
+    <?php
+    $lists = Lijst::getByUserId($user['id']);
+    foreach($lists as $list){
+        $listId = $list['id'];
+
+        echo "<div class='list'>";
+        echo "<a class='listName' href='lists/?id=$listId'>";
+        echo "<h1>".$list['title']."</h1>";
+        echo "</a>";
+        echo "<h2>".$list['description']."</h2>";
+        echo "</div>";
+    }
+    ?>
+    </div>
+
     <form action="./addList.php" method="POST">
         <button class="btn" name="newList" type="submit">
             <span>NEW LIST</span>
