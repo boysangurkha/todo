@@ -41,7 +41,7 @@ $listId = $list['id'];
         foreach($tasks as $task){
 
             $taskId = $task['id'];
-            echo "<a class='taskName' href='tasks/?id=$taskId'>";
+            echo "<a class='taskName' href='../tasks/?id=$taskId'>";
             echo "<h1>".$task['title']."</h1>";
             echo "</a>";
 

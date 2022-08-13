@@ -32,8 +32,8 @@ $user = User::getUserByEmail($_SESSION['email']);
     <form method="POST" enctype="multipart/form-data"> 
         <h1>New Task</h1>
         <input type="text" name="taskTitle" placeholder="Task title">
-        <input type="date" name="deadline" placeholder="deadline">
-        <input type="text" name="hours" placeholder="hours">
+        <input type="date" name="deadline" placeholder="Deadline">
+        <input type="number" name="hours" placeholder="Estimate hours">
 
         <button class="btn" name="submit" type="submit" value="addTask">
             <span>ADD TASK</span>
