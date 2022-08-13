@@ -32,13 +32,13 @@ $user = User::getUserByEmail($_SESSION['email']);
         echo "<a class='listName' href='lists/?id=$listId'>";
         echo "<h1>".$list['title']."</h1>";
         echo "</a>";
-        echo "<h2>".$list['description']."</h2>";
+        //echo "<h2>".$list['description']."</h2>";
         echo "</div>";
     }
     ?>
     </div>
 
-    <form action="./addList.php" method="POST">
+    <form action="lists/addList.php" method="POST">
         <button class="btn" name="newList" type="submit">
             <span>NEW LIST</span>
         </button>

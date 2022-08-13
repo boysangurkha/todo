@@ -1,12 +1,15 @@
 <?php
-include_once(__DIR__ . "/helpers/bootstrap.php");
-include_once(__DIR__ . "/helpers/Security.php");
+$dir = dirname(__DIR__, 1);
+
+include_once("$dir/classes/Db.php");
+include_once("$dir/classes/User.php");
+include_once("$dir/helpers/Security.php");
 if(Security::onlyLoggedInUsers()){
     if(!empty($_POST)){
     }
 }
 else{
-    header("Location: login.php");
+    header("Location: ../login.php");
 }
 
 $user = User::getUserByEmail($_SESSION['email']);
@@ -20,7 +23,7 @@ $user = User::getUserByEmail($_SESSION['email']);
     <title>Add new List - <?php echo ($user['username']);?></title>
 </head>
 <body>
-    <form action="helpers/addList-upload.php" method="POST" enctype="multipart/form-data"> 
+    <form action="../helpers/addList-upload.php" method="POST" enctype="multipart/form-data"> 
         <h1>New List</h1>
         <input type="text" name="listTitle" placeholder="List title">
         <input type="text" name="listDescription" placeholder="List description">
