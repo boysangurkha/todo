@@ -30,16 +30,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include_once(__DIR__ . "/helpers/fonts.php")?>
     <title>Login - ToDo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/button.css">
 </head>
 <body>
-    <form method="post" action=>
-        <h1>Login</h1>
-        <input name="username" type="username" placeholder="Username">
-        <input name="password" type="password" placeholder="Password">
-        <button class="btn" name="login" type="submit" value="Login">
-            <span>LOGIN</span>
-        </button>
-    </form>
+    <div class="container">
+        <h1>TODO</h1>
+        <form method="post" action=>
+            <h2>Login</h2>
+            <div class="velden">
+                <input name="username" type="username" placeholder="Username">
+                <input name="password" type="password" placeholder="Password">
+                <div class="buttonContainer">
+                    <div class="center">
+                        <button class="btn" name="login" type="submit" value="Login">
+                            <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+                            <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+                            <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+                            </svg>
+                            <span id="registerBtn">LOGIN</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <h3>Not registered?</h3>
+            <a href="register.php">REGISTER</a>
+        </form>
+    </div>
 </body>
 </html>
