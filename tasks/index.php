@@ -30,9 +30,14 @@ $comments = Comment::getCommentsByTaskId($taskId);
 </head>
 <body>
     <?php
+    $datestr = $task['deadline'];
+    $date=strtotime($datestr);
+    $diff=$date-time();
+    $days=floor($diff/(60*60*24));
+
     echo "<h1>".$task['title']."</h1>";
-    echo "<h2>".$task['deadline']."</h2>";
-    echo "<h2>".$task['hours']." "."hour(s)"."</h2>";
+    echo "<h2>".$task['deadline']." "."($days days remaining)"."</h2>";
+    echo "<h2>"."Estimate hours:".$task['hours']."</h2>";
     ?>
 
     <div>

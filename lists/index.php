@@ -57,9 +57,8 @@ $listId = $list['id'];
             $date=strtotime($datestr);
             $diff=$date-time();
             $days=floor($diff/(60*60*24));
-            $hours=round(($diff-$days*60*60*24)/(60*60));
-            echo "$days days $hours hour(s) remain";
-
+            echo "$days days remaining";
+            echo "<br>";
             ?></h2>
         <?php } ?>
     </div>
