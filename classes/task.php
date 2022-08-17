@@ -50,7 +50,7 @@
         public static function getByListId($listId)
         {
             $conn = Db::getInstance();
-            $stmt = $conn->prepare("SELECT * FROM tasks WHERE list_id = :list_id");
+            $stmt = $conn->prepare("SELECT * FROM `tasks` WHERE list_id = :list_id ORDER BY tasks.deadline ASC");
             $stmt->bindValue(":list_id", $listId);
             $stmt->execute();
             $result = $stmt->fetchAll();
