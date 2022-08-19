@@ -57,7 +57,13 @@ $comments = Comment::getCommentsByTaskId($taskId);
         </ul>
     </div>
 
-
+    
+    <form action="file-upload.php" method="POST" enctype="multipart/form-data">
+        <input type="file" name="images[]" value='' multiple>
+        <button class="btn" name="uploadFile" type="submit">
+            <span>UPLOAD FILES</span>
+        </button>
+    </form>  
 
     <?php
     echo "<a href='../helpers/deleteTask.php/?id=$taskId'>DELETE TASK</a><br><br>";

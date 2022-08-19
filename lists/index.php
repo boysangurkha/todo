@@ -28,16 +28,20 @@ $listId = $list['id'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include_once("../helpers/fonts.php")?>
+    <link rel="stylesheet" href="../css/repeat.css">
+    <script src="https://kit.fontawesome.com/ba573f667f.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
+    <?php include_once("../partials/nav.php")?>
+    <a id="uitloggen" href="../logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
     <?php
-    echo "<h1>".$list['title']."</h1>";
-    echo "<h2 class='desc'>".$list['description']."</h2>";
+    echo "<h1 class='titel'>"."List: ".$list['title']."</h1>";
     ?>
     <hr>
 
-    <div class="container">
+    <div class="">
         <?php
         $tasks = Task::getByListId($list['id']);
         foreach($tasks as $task){

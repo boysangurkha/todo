@@ -7,6 +7,7 @@
         private $deadline;
         private $hours;
         private $userId;
+        private $image;
 
         public function getTitle()
         {
@@ -69,6 +70,13 @@
             $stmt->execute();
         }
 
+        public function saveImage(){
+            $conn = Db::getInstance();
+            $stmt = $conn->prepare("UPDATE tasks SET image = :image");
+            $stmt->bindValue(":image", $this->image);
+            $stmt->execute();
+        }
+
         public static function deleteById($id)
         {
             $conn = Db::getInstance();
@@ -119,6 +127,18 @@
                 $this->userId = $userId;
 
                 return $this;
+        }
+
+        
+        public function getImage()
+        {
+            return $this->image;
+        }
+
+        public function setImage($image)
+        {
+            $this->image = $image;
+            return $this;
         }
 
     }

@@ -1,0 +1,106 @@
+body{
+    margin: 0;
+}
+
+#logo{
+    color: white;
+    display: inline-block;
+    width: 100%;
+    font-family: 'Anton', sans-serif;
+    text-align: center;
+    padding: 0.6em 0em 0.3em 0em;
+    font-size: 30px;
+    background-color: rgb(70, 88, 159);
+}
+
+#uitloggen{
+    position: fixed;
+    top: 28px;
+    right: 30px;
+    z-index: 100;
+    font-size: 20px;
+    color: white;
+}
+
+.logoContainer{
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+nav{
+    position: fixed;
+    top: 55px;
+    width: 100%;
+
+    z-index: 98;
+}
+
+.titel{
+    color: rgb(70, 88, 159);
+    display: inline-block;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    padding: 0.3em 0em 0.3em 15px;
+    font-size: 20px;
+    font-weight: 300;
+    background-color: rgb(243, 245, 255);
+}
+
+.container{
+    display: block;
+    background-color: white;
+    width: 100%;
+    margin-top: 20px;
+    padding: 1em 0em;
+    z-index: 2;
+}
+
+.container a{
+    text-decoration: none;
+}
+
+.container h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 0.3em 0em 0.3em 15px;
+    color: rgb(70, 88, 159);
+}
+
+.container h2{
+    padding-left: 15px;
+    margin-top: -25px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgb(184, 192, 236);
+}
+
+.buttonCenter{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    z-index: 100;
+    border-top: solid 2px rgb(243, 245, 255);
+}
+
+.btn{
+    margin: 40px 0px 60px 0px;
+    background-color: rgb(70, 88, 159);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover{
+    background-color: rgb(13, 21, 60);
+}
