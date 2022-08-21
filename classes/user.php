@@ -34,10 +34,7 @@
             $stmt -> execute();
             $user = ($stmt->fetch());
 
-                if ($user) {
-                    throw new Exception("Username already exists");
-                    return false;
-                }
+
                 $this->username = $username;
                 return $this->username;
         }
@@ -77,7 +74,7 @@
             $user = ($stmt->fetch());
           
             if(!$user){
-                throw new Exception("User not exist.");
+                throw new Exception("User doesn't exist.");
                 return false;
             }
 

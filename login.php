@@ -12,7 +12,7 @@
         
         if($user->canLogin()){
             session_start();
-            $_SESSION['email'] = user::getEmailByUsername($username)['email'];
+            $_SESSION['email'] = User::getEmailByUsername($username)['email'];
             header("Location: index.php");
         }
 
