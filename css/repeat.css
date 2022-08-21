@@ -56,25 +56,36 @@ nav{
     z-index: 2;
 }
 
-.container a{
+.container2{
+
+}
+
+
+a{
     text-decoration: none;
 }
 
-.container h1{
+h1{
     font-family: 'Roboto', sans-serif;
     font-size: 30px;
     font-weight: 500;
-    padding: 0.3em 0em 0.3em 15px;
     color: rgb(70, 88, 159);
+}
+
+.container h1{
+    padding: 0.3em 0em 0.3em 15px;
+}
+
+h2{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgb(184, 192, 236);
 }
 
 .container h2{
     padding-left: 15px;
     margin-top: -25px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-weight: 300;
-    color: rgb(184, 192, 236);
 }
 
 .buttonCenter{
@@ -104,3 +115,44 @@ nav{
 .btn:hover{
     background-color: rgb(13, 21, 60);
 }
+
+.flex-container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 27px 1em 0px 1em;
+    padding: 1em 0em;
+}
+
+.flex{
+    display: flex;
+}
+
+.taskName{
+   padding-left: 1em; 
+}
+
+.listBalk{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    background-color: rgb(243, 245, 255);
+}
+
+.listBalk a{
+    margin-right: 30px;
+}
+
+.fa-trash{
+    color: rgb(70, 88, 159);
+}
+
+.taskName{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+}
+
+
+
+

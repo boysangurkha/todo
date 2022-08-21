@@ -29,6 +29,8 @@ $user = User::getUserByEmail($_SESSION['email']);
     <nav>
         <h1 class="titel">Lists</h1>
     </nav>
+
+    
     <div class="container">
     <?php
     $lists = Lijst::getByUserId($user['id']);

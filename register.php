@@ -29,8 +29,12 @@
     <title>Register - ToDo</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/error.css">
 </head>
 <body>
+    <?php if(isset($error)): ?>
+        <div class="errorMessage"><?php echo $error; ?></div>
+    <?php endif; ?>
     <div class="container">
         <h1>TODO</h1>
         <form method="post" action=>

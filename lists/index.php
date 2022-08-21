@@ -35,47 +35,64 @@ $listId = $list['id'];
 </head>
 <body>
     <?php include_once("../partials/nav.php")?>
-    <a id="uitloggen" href="../logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
-    <?php
-    echo "<h1 class='titel'>"."List: ".$list['title']."</h1>";
-    ?>
-    <hr>
+    
+    <div class="listBalk">
 
-    <div class="">
-        <?php
-        $tasks = Task::getByListId($list['id']);
-        foreach($tasks as $task){
-            if($task['checked'] == 1){ ?>
-                <a class='taskName' href='../tasks/?id=<?php echo $task['id'];?>'>
-                <?php echo "<h1 style='text-decoration: line-through;'>".$task["title"]."</h1>"; ?>
-                </a>
-                <input type='checkbox' class="checked" id='check1' onclick="location.href = 'check.php?id=<?php echo $task['id'];?>&check=1';" checked>
-            <?php } else{ ?>
-                <a class='taskName' href='../tasks/?id=<?php echo $task['id'];?>'>
-                <?php echo "<h1>".$task["title"]."</h1>";?>
-                </a>
-                <input type='checkbox' class="checked" id='check2' onclick="location.href = 'check.php?id=<?php echo $task['id'];?>&check=0';">
+            <?php
+            echo "<nav><h1 class='titel listBalk'>"."List: ".$list['title'];?>
+
+            <?php
+            echo "<a href='../helpers/deleteList.php/?id=$listId'><i class='fa fa-trash' aria-hidden='true'></i></a></nav></h1>";
+            ?>
+
+    </div>
+    
+    <div class="container2">
+        <div class="flex-container">
+            <?php
+            $tasks = Task::getByListId($list['id']);
+            foreach($tasks as $task){
+                if($task['checked'] == 1){ ?>
+                    <div class="flex">
+                        <input type='checkbox' class="checked" id='check1' onclick="location.href = 'check.php?id=<?php echo $task['id'];?>&check=1';" checked>
+                        <a class='taskName' href='../tasks/?id=<?php echo $task['id'];?>'>
+                        <?php echo "<h1 style='text-decoration-line: line-through; font-weight: 300; font-style: italic;'>".$task["title"]."</h1>"; ?>
+                        </a> 
+                    </div>
+                <?php } else{ ?>
+                    <div class="flex">
+                        <input type='checkbox' class="checked" id='check2' onclick="location.href = 'check.php?id=<?php echo $task['id'];?>&check=0';">
+                        <a class='taskName' href='../tasks/?id=<?php echo $task['id'];?>'>
+                        <?php echo "<h1>".$task["title"]."</h1>";?>
+                        </a>
+                    </div>
+                <?php } ?>
+                <div class="flex2">
+                    <h2><?php 
+                    $datestr = $task['deadline'];
+                    $date=strtotime($datestr);
+                    $diff=$date-time();
+                    $days=floor($diff/(60*60*24));
+                    echo "$days day(s) remaining";
+
+                    ?></h2>
+                </div>
             <?php } ?>
-            <h2><?php 
-            $datestr = $task['deadline'];
-            $date=strtotime($datestr);
-            $diff=$date-time();
-            $days=floor($diff/(60*60*24));
-            echo "$days days remaining";
-            echo "<br>";
-            ?></h2>
-        <?php } ?>
+        </div>
     </div>
 
+    
+
     <form method="POST">
-        <button class="btn" name="newTask" type="submit">
-            <span>NEW TASK</span>
-        </button>
+        <div class="buttonCenter">
+            <button class="btn" name="newTask" type="submit">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                <span>NEW TASK</span>
+            </button>
+        </div>
     </form>  
 
-    <?php
-    echo "<a href='../helpers/deleteList.php/?id=$listId'>DELETE LIST</a><br><br>";
-    ?>
+    
 
 </body>
 </html>

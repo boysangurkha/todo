@@ -32,12 +32,12 @@
             $stmt = $conn->prepare("SELECT username FROM users WHERE username = :username");
             $stmt -> bindValue(":username", $username);
             $stmt -> execute();
-            // $user = ($stmt->fetch());
+            $user = ($stmt->fetch());
 
-            //     if ($user) {
-            //             throw new Exception("Username already exists");
-            //             return false;
-            //     }
+                if ($user) {
+                    throw new Exception("Username already exists");
+                    return false;
+                }
                 $this->username = $username;
                 return $this->username;
         }
