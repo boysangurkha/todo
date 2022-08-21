@@ -1,7 +1,8 @@
 <?php
 include_once("../helpers/Security.php");
-include_once("../classes/user.php");
+include_once("../classes/User.php");
 include_once("../classes/Lijst.php");
+include_once("../classes/Task.php");
 if(Security::onlyLoggedInUsers()){
     if(!empty($_POST)){
     }
@@ -15,7 +16,12 @@ if(!empty($_POST)){
     $title = $_POST['taskTitle'];
     $deadline = $_POST['deadline'];
     $hours = $_POST['hours'];
-    header("Location: addTask-upload.php?id=$id&title=$title&deadline=$deadline&hours=$hours");
+    if (Task::checkTaskName($title)) {
+        echo "Task name is already taken";
+    }
+    else{
+        header("Location: addTask-upload.php?id=$id&title=$title&deadline=$deadline&hours=$hours");
+    }
 }
 
 $user = User::getUserByEmail($_SESSION['email']);
@@ -26,9 +32,16 @@ $user = User::getUserByEmail($_SESSION['email']);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/add.css">
+    <link rel="stylesheet" href="../css/repeat.css">
+    <?php include_once("../helpers/fonts.php")?>
     <title>Add new List - <?php echo ($user['username']);?></title>
 </head>
 <body>
+<?php if(isset($error)): ?>
+        <div class="errorMessage"><?php echo $error; ?></div>
+    <?php endif; ?>
+    <?php include_once("../partials/nav.php")?>      
     <form method="POST" enctype="multipart/form-data"> 
         <h1>New Task</h1>
         <input type="text" name="taskTitle" placeholder="Task title">

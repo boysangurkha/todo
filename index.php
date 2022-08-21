@@ -46,6 +46,7 @@ $user = User::getUserByEmail($_SESSION['email']);
     }
     ?>
     </div>
+
     
     <form action="lists/addList.php" method="POST">
         <div class="buttonCenter">

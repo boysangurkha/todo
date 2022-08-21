@@ -7,7 +7,7 @@
         private $deadline;
         private $hours;
         private $userId;
-        private $image;
+
 
         public function getTitle()
         {
@@ -36,55 +36,6 @@
 
             return $this;
         }
-
-
-        public static function getById($id)
-        {
-            $conn = Db::getInstance();
-            $stmt = $conn->prepare("SELECT * FROM tasks WHERE id = :id");
-            $stmt->bindValue(":id", $id);
-            $stmt->execute();
-            $result = $stmt->fetch();
-            return $result;
-        }
-
-        public static function getByListId($listId)
-        {
-            $conn = Db::getInstance();
-            $stmt = $conn->prepare("SELECT * FROM `tasks` WHERE list_id = :list_id ORDER BY tasks.deadline ASC");
-            $stmt->bindValue(":list_id", $listId);
-            $stmt->execute();
-            $result = $stmt->fetchAll();
-            return $result;
-        }
-
-        public function save()
-        {
-            $conn = Db::getInstance();
-            $stmt = $conn->prepare("INSERT INTO tasks (title, hours, deadline, list_id, user_id) VALUES (:title, :hours, :deadline, :list_id, :user_id)");
-            $stmt->bindValue(":title", $this->title);
-            $stmt->bindValue(":hours", $this->hours);
-            $stmt->bindValue(":deadline", $this->deadline);
-            $stmt->bindValue(":list_id", $this->listId);
-            $stmt->bindValue(":user_id", $this->userId);
-            $stmt->execute();
-        }
-
-        public function saveImage(){
-            $conn = Db::getInstance();
-            $stmt = $conn->prepare("UPDATE tasks SET image = :image");
-            $stmt->bindValue(":image", $this->image);
-            $stmt->execute();
-        }
-
-        public static function deleteById($id)
-        {
-            $conn = Db::getInstance();
-            $stmt = $conn->prepare("DELETE FROM tasks WHERE id = :id");
-            $stmt->bindValue(":id", $id);
-            $stmt->execute();
-        }
-
 
         public function getDeadline()
         {
@@ -129,16 +80,65 @@
                 return $this;
         }
 
-        
-        public function getImage()
+
+        public static function getById($id)
         {
-            return $this->image;
+            $conn = Db::getInstance();
+            $stmt = $conn->prepare("SELECT * FROM tasks WHERE id = :id");
+            $stmt->bindValue(":id", $id);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            return $result;
         }
 
-        public function setImage($image)
+        public static function checkTaskName($title)
         {
-            $this->image = $image;
-            return $this;
+            $conn = Db::getInstance();
+            $stmt = $conn->prepare("SELECT * FROM tasks WHERE title = :title");
+            $stmt->bindValue(":title", $title);
+            $stmt->execute();
+            $result = $stmt->fetch();
+            return $result;
         }
+
+        public static function getByListId($listId)
+        {
+            $conn = Db::getInstance();
+            $stmt = $conn->prepare("SELECT * FROM `tasks` WHERE list_id = :list_id ORDER BY tasks.deadline ASC");
+            $stmt->bindValue(":list_id", $listId);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            return $result;
+        }
+
+        public function save()
+        {
+            $conn = Db::getInstance();
+            $stmt = $conn->prepare("INSERT INTO tasks (title, hours, deadline, list_id, user_id) VALUES (:title, :hours, :deadline, :list_id, :user_id)");
+            $stmt->bindValue(":title", $this->title);
+            $stmt->bindValue(":hours", $this->hours);
+            $stmt->bindValue(":deadline", $this->deadline);
+            $stmt->bindValue(":list_id", $this->listId);
+            $stmt->bindValue(":user_id", $this->userId);
+            $stmt->execute();
+        }
+
+        public function saveImage(){
+            $conn = Db::getInstance();
+            $stmt = $conn->prepare("UPDATE tasks SET image = :image");
+            $stmt->bindValue(":image", $this->image);
+            $stmt->execute();
+        }
+
+        public static function deleteById($id)
+        {
+            $conn = Db::getInstance();
+            $stmt = $conn->prepare("DELETE FROM tasks WHERE id = :id");
+            $stmt->bindValue(":id", $id);
+            $stmt->execute();
+        }
+
+
+
 
     }

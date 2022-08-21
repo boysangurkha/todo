@@ -84,7 +84,7 @@ $listId = $list['id'];
     
 
     <form method="POST">
-        <div class="buttonCenter">
+        <div class="buttonCenter" id="destination">
             <button class="btn" name="newTask" type="submit">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                 <span>NEW TASK</span>
@@ -93,6 +93,6 @@ $listId = $list['id'];
     </form>  
 
     
-
+<script src="../js/list.js"></script>
 </body>
 </html>
