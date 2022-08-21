@@ -8,4 +8,4 @@ $conn = Db::getInstance();
 
 $sql = "UPDATE tasks SET uploads = NULL WHERE id = $id";
 $result = $conn->query($sql);
-header("Location: ../index.php");
+header("Location: ../tasks/?id=$id");
