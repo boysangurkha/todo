@@ -1,0 +1,65 @@
+.taskTekst{
+    text-align: center;
+    color: rgb(70, 88, 159);
+}
+
+.taskDiv{
+    margin-top: 67px;
+}
+
+.overdue{
+    color: red;
+    font-weight: 500;
+}
+
+.notOverdue{
+    font-weight: 500;
+}
+
+.commentContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+input{
+    padding: 9px 22px;
+    background-color: white;
+    border: solid 1px rgb(70, 88, 159);
+    box-sizing: border-box;
+    outline: none;
+}
+
+::placeholder{
+    font-family: 'Roboto', sans-serif;
+    color: rgb(70, 88, 159);
+}
+
+input:focus {
+    color: rgb(70, 88, 159);
+}
+
+.centerIcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: rgb(70, 88, 159);
+    width: 40px;
+}
+
+.material-icons{
+    margin: 0;
+    color: white;
+}
+
+
+/*.material-icons{
+    display: block;
+    color: white;
+    background-color: rgb(70, 88, 159);
+    margin: 0 auto;
+    height: 100%;
+    width: 40px;
+    
+}*/

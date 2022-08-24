@@ -6,7 +6,7 @@ body {
     background-color: rgb(70, 88, 159);
 }
 
-.container{
+.inputContainer{
     margin-top: 30px;
     display: flex;
     flex-direction: column;

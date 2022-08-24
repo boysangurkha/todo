@@ -29,57 +29,84 @@ $listId = $list['id'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include_once("../helpers/fonts.php")?>
-    <link rel="stylesheet" href="../css/repeat.css">
+    <link rel="stylesheet" href="../css/list.css">
+    <link rel="stylesheet" href="../css/arrow.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ba573f667f.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>Lists - ToDo</title>
 </head>
 <body>
     <?php include_once("../partials/nav.php")?>
-    
+    <a class="arrowBack" href="../index.php"><i class="material-icons">&#xe5cb;</i></a>
     <div class="listBalk">
 
             <?php
             echo "<nav><h1 class='titel listBalk'>"."List: ".$list['title'];?>
 
             <?php
-            echo "<a href='../helpers/deleteList.php/?id=$listId'><i class='fa fa-trash' aria-hidden='true'></i></a></nav></h1>";
+            echo "<a href='../helpers/deleteList.php/?id=$listId'><i class='fa fa-trash' aria-hidden='true'></i></a></h1></nav>";
             ?>
 
     </div>
     
-    <div class="container2">
-        <div class="flex-container">
+        <div class="container">
             <?php
             $tasks = Task::getByListId($list['id']);
             foreach($tasks as $task){
                 if($task['checked'] == 1){ ?>
-                    <div class="flex">
-                        <input type='checkbox' class="checked" id='check1' onclick="location.href = 'check.php?id=<?php echo $task['id'];?>&check=1';" checked>
-                        <a class='taskName' href='../tasks/?id=<?php echo $task['id'];?>'>
-                        <?php echo "<h1 style='text-decoration-line: line-through; font-weight: 300; font-style: italic;'>".$task["title"]."</h1>"; ?>
-                        </a> 
-                    </div>
+                    <div class="taskContainer">
+                        <div class="gegevens">
+                            <input type='checkbox' class="checked" id='check1' onclick="location.href = 'check.php?id=<?php echo $task['id'];?>&check=1';" checked>
+                            <a class='taskName' href='../tasks/?id=<?php echo $task['id'];?>'>
+                            <?php echo "<h1 style='text-decoration-line: line-through; font-weight: 300; font-style: italic;'>".$task["title"]."</h1>"; ?>
+                            </a>
+                        </div>
+                        <div class="time">
+                            <h2><?php 
+                            $datestr = $task['deadline'];
+                            $date=strtotime($datestr);
+                            $diff=$date-time();
+                            $days=floor($diff/(60*60*24));
+                            if($days < 0){
+                                $daysVolledig = "<span class='overdue'>"."Deadline overdue!"."</span>";
+                                echo $daysVolledig;
+                            }
+                            else{
+                                $daysVolledig = "$days day(s) left";
+                                echo $daysVolledig;
+                            }
+                            ?></h2> 
+                        </div>
+                    </div>    
                 <?php } else{ ?>
-                    <div class="flex">
-                        <input type='checkbox' class="checked" id='check2' onclick="location.href = 'check.php?id=<?php echo $task['id'];?>&check=0';">
-                        <a class='taskName' href='../tasks/?id=<?php echo $task['id'];?>'>
-                        <?php echo "<h1>".$task["title"]."</h1>";?>
-                        </a>
-                    </div>
+                    <div class="taskContainer">
+                        <div class="gegevens">
+                            <input type='checkbox' class="checked" id='check2' onclick="location.href = 'check.php?id=<?php echo $task['id'];?>&check=0';">
+                            <a class='taskName' href='../tasks/?id=<?php echo $task['id'];?>'>
+                            <?php echo "<h1>".$task["title"]."</h1>";?>
+                            </a>
+                        </div>
+                        <div class="time">
+                            <h2><?php 
+                            $datestr = $task['deadline'];
+                            $date=strtotime($datestr);
+                            $diff=$date-time();
+                            $days=floor($diff/(60*60*24));
+                            if($days < 0){
+                                $daysVolledig = "<span class='overdue'>"."Deadline overdue!"."</span>";
+                                echo $daysVolledig;
+                            }
+                            else{
+                                $daysVolledig = "$days day(s) left";
+                                echo $daysVolledig;
+                            }
+                            ?></h2>
+                        </div>
+                    </div>   
                 <?php } ?>
-                <div class="flex2">
-                    <h2><?php 
-                    $datestr = $task['deadline'];
-                    $date=strtotime($datestr);
-                    $diff=$date-time();
-                    $days=floor($diff/(60*60*24));
-                    echo "$days day(s) remaining";
-
-                    ?></h2>
-                </div>
+                    
             <?php } ?>
         </div>
-    </div>
 
     
 

@@ -35,7 +35,7 @@
     <?php if(isset($error)): ?>
         <div class="errorMessage"><?php echo $error; ?></div>
     <?php endif; ?>
-    <div class="container">
+    <div class="inputContainer">
         <h1>TODO</h1>
         <form method="post" action=>
             <h2>Register</h1>

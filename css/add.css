@@ -1,0 +1,37 @@
+
+form{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.velden{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+input{
+    padding: 9px 22px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    background-color: white;
+    border: solid 1px rgb(70, 88, 159);
+    box-sizing: border-box;
+    outline: none;
+}
+
+::placeholder{
+    font-family: 'Roboto', sans-serif;
+    color: rgb(70, 88, 159);
+}
+
+input:focus {
+    color: rgb(70, 88, 159);
+}
+
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

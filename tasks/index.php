@@ -26,34 +26,57 @@ $comments = Comment::getCommentsByTaskId($taskId);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <?php include_once("../helpers/fonts.php")?>
+    <link rel="stylesheet" href="../css/list.css">
+    <link rel="stylesheet" href="../css/arrow.css">
+    <link rel="stylesheet" href="../css/task.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ba573f667f.js" crossorigin="anonymous"></script>
+    <title>Tasks - ToDo</title>
 </head>
 <body>
+    <?php include_once("../partials/nav.php")?>
+    <a class="arrowBack" href="../index.php"><i class="material-icons">&#xe5cb;</i></a>
+    <div class="listBalk">
+
+            <?php
+            echo "<nav><h1 class='titel listBalk'>"."Task: ".$task['title'];?>
+
+            <?php
+            echo "<a href='../helpers/deleteTask.php/?id=$taskId'><i class='fa fa-trash' aria-hidden='true'></i></a></h1></nav>";
+            ?>
+
+    </div>
+
     <?php
     $datestr = $task['deadline'];
     $date=strtotime($datestr);
     $diff=$date-time();
     $days=floor($diff/(60*60*24));
-
-    echo "<h1>".$task['title']."</h1>";
-    echo "<h2>".$task['deadline']." "."($days days remaining)"."</h2>";
-    echo "<h2>"."Estimate hours:".$task['hours']."</h2>";
+    if($days < 0){
+        $daysVolledig = "<span class='overdue'>"."Deadline overdue!"."</span>";
+    }
+    else{
+        $daysVolledig = "<span class='notOverdue'>"."$days day(s) left"."</span>";
+    }
+    echo "<div class='taskDiv'>"."<h2 class='taskTekst'>"."Due date: ".$task['deadline']." "."| $daysVolledig"."</h2></div>";
+    echo "<h2 class='taskTekst'>"."Estimate hours: ".$task['hours']."</h2>"."</div>";
     ?>
 
     <div>
-        <div>
-            <input type="text" id="commentText" placeholder="Type a comment">
-            <a href="#" id="btnAddComment" data-taskid="<?php echo $taskId?>">Add comment</a>
+        <div class="commentContainer">
+            <input type="text" id="commentText" placeholder="Leave a comment">
+            <a href="#" id="btnAddComment" data-taskid="<?php echo $taskId?>"><div class="centerIcon"><i class="material-icons">&#xe0b9;</i></div></a>
         </div>
 
         <ul id="list">
-        <?php
-        $lenght = count($comments);
+            <?php
+            $lenght = count($comments);
 
-        for ($i=0; $i < $lenght; $i++) { 
-            echo "<li>".$comments[$i]["comment"]."</li>";
-        }
-        ?>
+            for ($i=0; $i < $lenght; $i++) { 
+                echo "<li>".$comments[$i]["comment"]."</li>";
+            }
+            ?>
         </ul>
         <?php
             if ($task['uploads']) {
@@ -62,18 +85,16 @@ $comments = Comment::getCommentsByTaskId($taskId);
             }
             else{   ?>
                 <form action="fileUploadScript.php?id=<?php echo $_GET["id"] ?>" method="post" enctype="multipart/form-data">
-                Upload a File:
-                <input type="file" name="the_file" id="fileToUpload">
-                <input type="submit" name="submit" value="Start Upload">
+                    Upload a File:
+                    <input type="file" name="the_file" id="fileToUpload">
+                    <input type="submit" name="submit" value="Start Upload">
         <?php } ?>
      
 
                 </form>
     </div>
 
-    <?php
-    echo "<a href='../helpers/deleteTask.php/?id=$taskId'>DELETE TASK</a><br><br>";
-    ?>
+    
 
     <script src="../js/comment.js"></script>
 </body>
