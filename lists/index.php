@@ -1,7 +1,7 @@
 <?php
 include_once("../classes/User.php");
 include_once("../classes/Lijst.php");
-include_once("../classes/task.php");
+include_once("../classes/Task.php");
 include_once("../helpers/Security.php");
 include_once("../classes/Db.php");
 if(Security::onlyLoggedInUsers()){

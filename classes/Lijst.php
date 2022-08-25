@@ -1,5 +1,5 @@
 <?php
-    include_once(__DIR__ . "/db.php");
+    include_once("Db.php");
 
     class Lijst { 
         private $title;
@@ -102,3 +102,4 @@
 
 
     }
+    ?>

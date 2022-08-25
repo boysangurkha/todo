@@ -10,6 +10,7 @@
         $user->setUsername($username);
         $user->setPassword($password);
         
+        
         if($user->canLogin()){
             session_start();
             $_SESSION['email'] = User::getEmailByUsername($username)['email'];

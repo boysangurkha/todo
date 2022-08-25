@@ -1,5 +1,5 @@
 <?php
-    include_once(__DIR__ . "/db.php");
+    include_once("Db.php");
 
     class User {
         private $email;
@@ -137,4 +137,5 @@
             $user = ($stmt->fetch());
             return $user;
         }
+
     }

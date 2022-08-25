@@ -4,7 +4,7 @@ $dir = dirname(__DIR__, 1);
 include_once("$dir/classes/Db.php");
 include_once("$dir/classes/User.php");
 include_once("$dir/helpers/Security.php");
-include_once("../classes/lijst.php");
+include_once("../classes/Lijst.php");
 if(Security::onlyLoggedInUsers()){
     if(!empty($_POST)){
         try{
