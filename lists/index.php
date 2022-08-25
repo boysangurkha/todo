@@ -57,9 +57,10 @@ $listId = $list['id'];
                     <div class="taskContainer">
                         <div class="gegevens">
                             <input type='checkbox' class="checked" id='check1' onclick="location.href = 'check.php?id=<?php echo $task['id'];?>&check=1';" checked>
-                            <a class='taskName' href='../tasks/?id=<?php echo $task['id'];?>'>
-                            <?php echo "<h1 style='text-decoration-line: line-through; font-weight: 300; font-style: italic;'>".$task["title"]."</h1>"; ?>
+                            <label class="strikethrough"><a class='taskName' href='../tasks/?id=<?php echo $task['id'];?>'>
+                            <?php echo "<h1>".$task["title"]."</h1>"; ?>
                             </a>
+                            </label>
                         </div>
                         <div class="time">
                             <h2><?php 
@@ -82,9 +83,10 @@ $listId = $list['id'];
                     <div class="taskContainer">
                         <div class="gegevens">
                             <input type='checkbox' class="checked" id='check2' onclick="location.href = 'check.php?id=<?php echo $task['id'];?>&check=0';">
-                            <a class='taskName' href='../tasks/?id=<?php echo $task['id'];?>'>
+                            <label class="strikethrough"><a class='taskName' href='../tasks/?id=<?php echo $task['id'];?>'>
                             <?php echo "<h1>".$task["title"]."</h1>";?>
                             </a>
+                            </label>
                         </div>
                         <div class="time">
                             <h2><?php 

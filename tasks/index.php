@@ -78,20 +78,25 @@ $comments = Comment::getCommentsByTaskId($taskId);
             }
             ?>
         </ul>
+        <div class="buttonCenter">
+
         <?php
             if ($task['uploads']) {
                 echo "<a href='../uploads/".$task['uploads']."' target='_blank' >Open file: ". $task['uploads']."</a>";
                 echo "<br><a href='deleteFile.php?id=".$task['id']."' > Delete file: ". $task['uploads']."</a>";
             }
-            else{   ?>
+            else{   ?></div>
+                <div class="buttonCenter" id="destination">
                 <form action="fileUploadScript.php?id=<?php echo $_GET["id"] ?>" method="post" enctype="multipart/form-data">
-                    Upload a File:
+                    <h2 id="upl">Upload a File:</h2>
                     <input type="file" name="the_file" id="fileToUpload">
-                    <input type="submit" name="submit" value="Start Upload">
+                    <input type="submit" name="submit" value="Upload" id="uploadFile">
+                    
         <?php } ?>
      
 
                 </form>
+                </div>
     </div>
 
     

@@ -142,4 +142,8 @@ h2{
     font-weight: 500;
 }
 
-
+input[type=checkbox]:checked + label.strikethrough {
+    text-decoration: line-through;
+    font-weight: 300; 
+    font-style: italic;
+}

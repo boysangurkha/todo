@@ -46,6 +46,7 @@ input:focus {
     height: 100%;
     background-color: rgb(70, 88, 159);
     width: 40px;
+    transition: 0.3s;
 }
 
 .material-icons{
@@ -53,13 +54,55 @@ input:focus {
     color: white;
 }
 
+.centerIcon:hover{
+    background-color: rgb(13, 21, 60);
+}
 
-/*.material-icons{
-    display: block;
-    color: white;
+ul > li{
+    font-family: 'Roboto', sans-serif;
+    display: inline-block;
+    padding: 6px 20px;
+    background-color: rgb(243, 245, 255);
+    margin: 0px 10px 20px 10px;
+    color: rgb(70, 88, 159);
+}
+
+ul{
+    margin-top: 30px;
+}
+
+.buttonCenter{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    z-index: 100;
+    border-top: solid 2px rgb(243, 245, 255);
+}
+
+form{
+    margin-bottom: 80px;
+}
+
+#upl{
+    margin-bottom: 30px;
+    color: rgb(70, 88, 159);
+}
+
+#fileToUpload{
+    border: none;
+}
+
+#uploadFile{
+    border: none;
     background-color: rgb(70, 88, 159);
-    margin: 0 auto;
-    height: 100%;
-    width: 40px;
-    
-}*/
+    color: white;
+    transition: 0.3s;
+}
+
+#uploadFile:hover{
+    background-color: rgb(13, 21, 60);
+    cursor: pointer;
+}
