@@ -78,13 +78,12 @@ $comments = Comment::getCommentsByTaskId($taskId);
             }
             ?>
         </ul>
-        <div class="buttonCenter">
+        <div class="buttonCenter" id="opdeFile">
 
         <?php
             if ($task['uploads']) {
-                echo "<a href='../uploads/".$task['uploads']."' target='_blank' >Open file: ". $task['uploads']."</a>";
-                echo "<br><a href='deleteFile.php?id=".$task['id']."' > Delete file: ". $task['uploads']."</a>";
-            }
+                echo "<a class='fotoLink' href='../uploads/".$task['uploads']."' target='_blank' >Open file: ". $task['uploads']."</a>";
+                echo "<br><a href='deleteFile.php?id=".$task['id']."'>"."<i class='fa fa-trash' aria-hidden='true'></i>"."</a>";            }
             else{   ?></div>
                 <div class="buttonCenter" id="destination">
                 <form action="fileUploadScript.php?id=<?php echo $_GET["id"] ?>" method="post" enctype="multipart/form-data">
